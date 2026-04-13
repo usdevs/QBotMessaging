@@ -6,8 +6,8 @@ services:
       repo: usdevs/QBotMessaging
       branch: main
       deploy_on_push: true
-    build_command: pip install python-telegram-bot python-dotenv
-    run_command: python main.py
+    dockerfile: Dockerfile
+    run_command: python3 main.py
     instance_count: 1
     instance_size_slug: basic-xxs
     envs:

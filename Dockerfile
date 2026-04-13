@@ -2,9 +2,9 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY pyproject.toml uv.lock ./
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
 COPY . .
 
-RUN pip install uv && uv sync
-
-CMD ["python", "main.py"]
+CMD ["python3", "main.py"]
