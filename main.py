@@ -9,6 +9,21 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "Hello, I'm QBot! To launch me please go to the chat interface or to my profile menu, and click 'Open App'"
     )
+    await update.message.reply_text(
+        "For event organisers who want to use QBot, please message NUSCC Tech Directorate (POC: @andrewsq)"
+    )
+    await update.message.reply_text("For more details, use /help")
+
+
+async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "Hello! I'm QBot.\n\n"
+        "To launch me:\n"
+        "1. Go to the chat interface or my profile menu\n"
+        "2. Click 'Open App'\n"
+        "3. Join a queue and get a unique nickname\n\n"
+        "That's it! Have fun!"
+    )
     await update.message.reply_text("Chat interface:")
     await update.message.reply_photo(photo=open("chat_interface.png", "rb"))
     await update.message.reply_text("Profile menu:")
@@ -18,20 +33,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
     await update.message.reply_photo(photo=open("nickname.png", "rb"))
     await update.message.reply_text("HAVE FUN!")
-    await update.message.reply_text("For more details, use /help")
-
-
-async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Hello! I'm QBot - your queue management assistant.\n\n"
-        "To launch me:\n"
-        "1. Go to the chat interface or my profile menu\n"
-        "2. Click 'Open App'\n"
-        "3. Join a queue and get a unique nickname\n\n"
-        "That's it! Have fun!"
-    )
-    await update.message.reply_text(
-        "For event organisers who want to use QBot, please message NUSCC Tech Directorate (POC: @andrewsq)"
+        "P.S. For event organisers who want to use QBot, please message NUSCC Tech Directorate (POC: @andrewsq)"
     )
 
 
