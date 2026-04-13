@@ -7,7 +7,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Hello, I'm QB! To launch me please go to the chat interface or to my profile menu, and click 'Open App'"
+        "Hello, I'm QBot! To launch me please go to the chat interface or to my profile menu, and click 'Open App'"
     )
     await update.message.reply_text("Chat interface:")
     await update.message.reply_photo(photo=open("chat_interface.png", "rb"))
@@ -18,6 +18,21 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
     await update.message.reply_photo(photo=open("nickname.png", "rb"))
     await update.message.reply_text("HAVE FUN!")
+    await update.message.reply_text("For more details, use /help")
+
+
+async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "Hello! I'm QBot - your queue management assistant.\n\n"
+        "To launch me:\n"
+        "1. Go to the chat interface or my profile menu\n"
+        "2. Click 'Open App'\n"
+        "3. Join a queue and get a unique nickname\n\n"
+        "That's it! Have fun!"
+    )
+    await update.message.reply_text(
+        "For event organisers who want to use QBot, please message NUSCC Tech Directorate (POC: @andrewsq)"
+    )
 
 
 class HealthHandler(BaseHTTPRequestHandler):
@@ -39,6 +54,7 @@ def main():
     load_dotenv()
     application = Application.builder().token(os.getenv("BOT_TOKEN")).build()
     application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("help", help_command))
 
     from threading import Thread
 
