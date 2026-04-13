@@ -9,9 +9,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "Hello, I'm QBot! To launch me please go to the chat interface or to my profile menu, and click 'Open App'"
     )
-    await update.message.reply_text(
-        f"For event organisers who want to use QBot, please message NUSCC Tech Directorate (POC: @{os.getenv('POC_USERNAME', 'andrewsq')})"
-    )
+    poc_username = os.getenv("POC_USERNAME")
+    if poc_username:
+        await update.message.reply_text(
+            f"For event organisers who want to use QBot, please message NUSCC Tech Directorate (POC: @{poc_username})"
+        )
     await update.message.reply_text("For more details, use /help")
 
 
@@ -33,9 +35,11 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
     await update.message.reply_photo(photo=open("nickname.png", "rb"))
     await update.message.reply_text("HAVE FUN!")
-    await update.message.reply_text(
-        f"P.S. For event organisers who want to use QBot, please message NUSCC Tech Directorate (POC: @{os.getenv('POC_USERNAME', 'andrewsq')})"
-    )
+    poc_username = os.getenv("POC_USERNAME")
+    if poc_username:
+        await update.message.reply_text(
+            f"P.S. For event organisers who want to use QBot, please message NUSCC Tech Directorate (POC: @{poc_username})"
+        )
 
 
 class HealthHandler(BaseHTTPRequestHandler):
