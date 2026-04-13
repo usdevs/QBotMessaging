@@ -6,9 +6,8 @@ services:
       repo: usdevs/QBotMessaging
       branch: main
       deploy_on_push: true
-    build_command: pip install uv && uv sync
+    build_command: pip install python-telegram-bot python-dotenv
     run_command: python main.py
-    http_port: 8080
     instance_count: 1
     instance_size_slug: basic-xxs
     envs:
